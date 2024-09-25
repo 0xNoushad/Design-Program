@@ -17,7 +17,7 @@ interface CartItem {
 const menuItems: MenuItem[] = [
   { id: 'home', label: 'REPCLUB' },
   { id: 'rep', label: 'REP' },
-  { id: 'patch', label: "PANTHER'S FREE FOOD PROGRAM PATCH" },
+  { id: 'patch', label: "PANTHER&apos;S FREE FOOD PROGRAM PATCH" },
   { id: 'books', label: 'Books' },
   { id: 'cart', label: 'Cart' },
 ]
@@ -100,7 +100,7 @@ function HomeSection() {
         animate={{ y: 0 }}
         transition={{ delay: 0.4, type: 'spring' }}
       >
-        Books, Audiobooks, Noname's Book Club, Home + Apparel & Gift Cards
+        Books, Audiobooks, Noname&apos;s Book Club, Home + Apparel & Gift Cards
       </motion.p>
       <motion.p
         className="text-sm font-bold mb-4"
@@ -142,7 +142,7 @@ function RepSection() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
-        <p>NEW IN: Panther's Free Food Program Patch</p>
+        <p>NEW IN: Panther&apos;s Free Food Program Patch</p>
         <div className="flex mt-2">
           {[1, 2, 3, 4].map((num) => (
             <motion.div
@@ -172,7 +172,7 @@ function PatchSection({ addToCart }: PatchSectionProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        PANTHER'S FREE FOOD PROGRAM PATCH
+        PANTHER&apos;S FREE FOOD PROGRAM PATCH
       </motion.h1>
       <motion.p
         className="text-sm mb-2"
@@ -189,7 +189,7 @@ function PatchSection({ addToCart }: PatchSectionProps) {
       >
         <Image
           src="/placeholder.svg"
-          alt="Historical photo of two women with 'People's Free Food Program' bags"
+          alt="Historical photo of two women with 'People&apos;s Free Food Program' bags"
           width={200}
           height={200}
           className="mb-2"
@@ -201,7 +201,7 @@ function PatchSection({ addToCart }: PatchSectionProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
-        On January, 1969, the Free Breakfast for School Children Program was initiated at St. Augustine's Church in Oakland by the Black Panther Party. The Panthers would cook and serve...
+        On January, 1969, the Free Breakfast for School Children Program was initiated at St. Augustine&apos;s Church in Oakland by the Black Panther Party. The Panthers would cook and serve...
       </motion.p>
       <motion.div
         className="flex justify-between items-center mt-auto"
@@ -214,7 +214,7 @@ function PatchSection({ addToCart }: PatchSectionProps) {
           className="bg-white text-black px-4 py-2 font-bold"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => addToCart({ name: "Panther's Free Food Program Patch", price: 10 })}
+          onClick={() => addToCart({ name: "Panther&apos;s Free Food Program Patch", price: 10 })}
         >
           ADD TO CART
         </motion.button>
@@ -231,53 +231,23 @@ function BooksSection() {
           className="text-xl font-serif mb-4"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
         >
-          Books
+          BOOKS
         </motion.h2>
-        {['Audiobooks', "Noname's Book Club", 'Home + Apparel', 'Gift Cards', 'All'].map((item, index) => (
-          <motion.p
-            key={item}
-            className="text-sm font-serif mb-2 border-b border-gray-200 pb-2"
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            whileHover={{ x: 5 }}
-          >
-            {item}
-          </motion.p>
-        ))}
-      </div>
-      <motion.div
-        className="bg-black text-white p-4"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
-        <h3 className="text-sm font-bold mb-2">JOIN THE CLUB, SUBSCRIBE TO OUR NEWSLETTER:</h3>
-        <input type="email" placeholder="ENTER YOUR EMAIL" className="w-full bg-white text-black p-2 mb-2 text-xs" />
-        <motion.h1
-          className="text-4xl font-black mb-2"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5, type: 'spring' }}
+        <motion.ul
+          className="space-y-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
         >
-          REP.CLUB
-        </motion.h1>
-        <p className="text-xs mb-2">
-          VISIT US:<br />
-          3054 S. VICTORIA AVE. LOS ANGELES, CA 90016
-        </p>
-        <p className="text-xs mb-2">
-          CONTACT US:<br />
-          +1-323-591-0012<br />
-          INFO@REPARATIONS.CLUB
-        </p>
-        <p className="text-xs">
-          FOLLOW US:<br />
-          FACEBOOK, INSTAGRAM, TWITTER, PINTEREST
-        </p>
-      </motion.div>
+          {['Audiobooks', 'Noname&apos;s Book Club', 'Home + Apparel', 'Gift Cards', 'All'].map((item, index) => (
+            <li key={index} className="text-lg font-bold text-black">
+              {item}
+            </li>
+          ))}
+        </motion.ul>
+      </div>
     </div>
   )
 }
@@ -287,61 +257,39 @@ interface CartSectionProps {
 }
 
 function CartSection({ items }: CartSectionProps) {
-  const total = items.reduce((sum, item) => sum + item.price, 0)
+  const totalPrice = items.reduce((total, item) => total + item.price, 0)
 
   return (
-    <div className="p-4 min-h-[calc(100vh-10rem)] flex flex-col text-white">
+    <div className="p-4 min-h-[calc(100vh-10rem)] bg-white text-black flex flex-col">
       <motion.h1
-        className="text-2xl font-black mb-4"
+        className="text-xl font-bold mb-4"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        Your Cart
+        CART
       </motion.h1>
-      {items.length === 0 ? (
-        <motion.p
-          className="text-lg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Your cart is empty.
-        </motion.p>
-      ) : (
-        <>
-          {items.map((item, index) => (
-            <motion.div
-              key={index}
-              className="flex justify-between items-center mb-2"
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <span>{item.name}</span>
-              <span>${item.price}</span>
-            </motion.div>
-          ))}
-          <motion.div
-            className="mt-4 text-xl font-bold"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            Total: ${total}
-          </motion.div>
-          <motion.button
-            className="mt-4 bg-white text-black px-4 py-2 font-bold w-full"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            CHECKOUT
-          </motion.button>
-        </>
-      )}
+      <motion.ul
+        className="space-y-2 flex-grow"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        {items.map((item, index) => (
+          <li key={index} className="flex justify-between">
+            <span>{item.name}</span>
+            <span>${item.price.toFixed(2)}</span>
+          </li>
+        ))}
+      </motion.ul>
+      <motion.div
+        className="mt-4 font-bold text-xl"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
+        TOTAL: ${totalPrice.toFixed(2)}
+      </motion.div>
     </div>
   )
 }
