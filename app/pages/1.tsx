@@ -84,8 +84,8 @@ function RepClubHome() {
           IS A CONCEPT BOOKSHOP & CREATIVE SPACE CURATED BY BLACKNESS IN LOS ANGELES.
         </p>
         <p className="text-xl sm:text-2xl">
-          Books, Audiobooks, Noname's Book Club, Home + Apparel & Gift Cards
-        </p>
+  Books, Audiobooks, Noname&apos;s Book Club, Home + Apparel & Gift Cards
+</p>
         <p className="text-3xl sm:text-4xl md:text-5xl font-black leading-none">
           BLACK-OWNED. WOMAN-OWNED.
         </p>
@@ -149,7 +149,8 @@ function PatchSection({ addToCart }: PatchSectionProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        PANTHER'S FREE FOOD PROGRAM PATCH
+      <p>NEW IN: Panther&apos;s Free Food Program Patch</p>
+
       </motion.h1>
       <motion.p
         className="text-sm mb-2"
