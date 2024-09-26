@@ -207,7 +207,7 @@ function BooksSection() {
       {/* Book Categories */}
       <div className="bg-white p-4 flex-grow">
         <motion.h2
-          className="text-4xl font-serif mb-4"
+          className="text-4xl font-serif mb-4 text-black"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -217,7 +217,7 @@ function BooksSection() {
         {['Audiobooks', "Noname's Book Club", 'Home + Apparel', 'Gift Cards', 'All'].map((item, index) => (
           <motion.p
             key={item}
-            className="text-lg font-serif mb-2 border-b border-gray-200 pb-2"
+            className="text-lg font-serif mb-2 border-b border-gray-200 pb-2 text-black" // Ensure text is black
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -267,28 +267,63 @@ function BooksSection() {
   );
 }
 
+
 // Cart Section
 function CartSection({ items }: { items: CartItem[] }) {
+  const total = items.reduce((sum, item) => sum + item.price, 0);
+
   return (
-    <div className="p-4 min-h-screen h-full text-white">
+    <div className="p-4 min-h-[calc(100vh-10rem)] flex flex-col text-white">
       <motion.h1
-        className="text-3xl font-black mb-4"
-        initial={{ y: -10, opacity: 0 }}
+        className="text-2xl font-black mb-4"
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.5 }}
       >
-        Cart
+        Your Cart
       </motion.h1>
       {items.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <motion.p
+          className="text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          Your cart is empty.
+        </motion.p>
       ) : (
-        <ul className="bg-gray-700 rounded-lg shadow-md p-4">
+        <>
           {items.map((item, index) => (
-            <li key={index} className="mb-2">
-              {item.name}: ${item.price}
-            </li>
+            <motion.div
+              key={index}
+              className="flex justify-between items-center mb-2"
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <span>{item.name}</span>
+              <span>${item.price.toFixed(2)}</span>
+            </motion.div>
           ))}
-        </ul>
+          <motion.div
+            className="mt-4 text-xl font-bold"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Total: ${total.toFixed(2)}
+          </motion.div>
+          <motion.button
+            className="mt-4 bg-white text-black px-4 py-2 font-bold w-full"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            CHECKOUT
+          </motion.button>
+        </>
       )}
     </div>
   );
